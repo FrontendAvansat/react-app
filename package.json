@@ -8,11 +8,19 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@emotion/core": "^10.3.1",
+    "@emotion/styled": "^10.3.0",
+    "@fontsource/open-sans": "^4.5.2",
+    "@fontsource/raleway": "^4.5.0",
+    "axios": "^0.24.0",
+    "emotion-theming": "^10.3.0",
     "next": "12.0.7",
     "react": "17.0.2",
     "react-dom": "17.0.2"
   },
   "devDependencies": {
+    "@types/react": "^17.0.37",
     "eslint": "8.5.0",
     "eslint-config-next": "12.0.7"
   }
