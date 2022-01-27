@@ -1,8 +1,13 @@
 import React from "react";
+import { RegisterComponent } from "../../components/Auth/Register";
 import { LayoutWrapper } from "../../components/LayoutWrapper";
 
 const RegisterPage = () => {
-  return <LayoutWrapper>Register Page</LayoutWrapper>;
+  return (
+    <LayoutWrapper>
+      <RegisterComponent></RegisterComponent>
+    </LayoutWrapper>
+  );
 };
 
 export default RegisterPage;

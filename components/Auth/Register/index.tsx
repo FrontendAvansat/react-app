@@ -1,22 +1,23 @@
 import { Input, Flex } from "@chakra-ui/core";
+import { CustomButton } from "../../Common/CustomButton";
 import NameWrap from "../../Common/NameWrap";
 import { useRegister } from "./useRegister";
 
 export const RegisterComponent = () => {
-  return console.log;
+  const { data, setData, sendData } = useRegister();
   return (
     <Flex justify={"center"} flex={1} align={"center"}>
       <Flex
         bg="grey.100"
         color="white"
-        h="400px"
+        h="600px"
         p="32px"
         direction={"column"}
         borderRadius={"10px"}
         boxShadow={"5px 5px 20px black"}
       >
         <Flex justify={"center"} fontFamily={"primary"} fontSize={"h2"}>
-          Login
+          Register
         </Flex>
         <NameWrap title="First Name">
           <Input
@@ -47,6 +48,7 @@ export const RegisterComponent = () => {
         </NameWrap>
         <NameWrap title="Password">
           <Input
+            type="password"
             value={data?.password}
             w="256px"
             onChange={(e) => {
@@ -55,8 +57,9 @@ export const RegisterComponent = () => {
           ></Input>
         </NameWrap>
         <CustomButton onClick={sendData} alignSelf={"center"}>
-          Login
+          Register
         </CustomButton>
       </Flex>
     </Flex>
+  );
 };

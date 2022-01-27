@@ -1,21 +1,17 @@
 import { Flex, Text, Link as ChakraLink } from "@chakra-ui/core";
 import Link from "next/link";
+import { usePoemCards } from "./usePoemCards";
 
 export interface PoemCardProps {
   title: string;
-  content: string;
+  text: string;
   authorName: string;
   id: string;
 }
 
-const poemBody = `Content Lorem Ipsum 
-jdsbjhdjchjgdkjucghujd 
-gcksjlckdghjfgcsjdhcf
-fkhvdkjbhv dfhvjd hdfjvh`;
-
 export const PoemCard: React.FC<PoemCardProps> = ({
   title,
-  content,
+  text,
   authorName,
   id,
 }) => {
@@ -32,7 +28,7 @@ export const PoemCard: React.FC<PoemCardProps> = ({
     >
       <Text>{title}</Text>
       <Text>
-        {content
+        {text
           .split("\n")
           .slice(0, 3)
           .map((message, key) => (

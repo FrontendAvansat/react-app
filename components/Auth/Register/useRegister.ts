@@ -11,24 +11,17 @@ export interface RegisterData {
 }
 export const useRegister = () => {
   const [data, setData] = useState<RegisterData>();
-  const { setData: setUser } = useContext(AuthContext);
   const { push } = useRouter();
   const sendData = async () => {
     try {
       const res = await apiClient.post(
         "api/auth-service/account/register",
-        data,
-        authorisation("This is the accesToken") //aici o sa am setUser(res.data)
+        data
       );
     } catch (e) {
       console.log("error");
     }
-    setUser({
-      accessToken: "asdfg",
-      email: "mari@yahoo.com",
-      name: "Mari Barbu",
-    });
-    push("/");
+    push("/auth/login");
   };
   return { data, setData, sendData };
 };

@@ -4,8 +4,8 @@ import { usePoem } from "./usePoem";
 
 export const Poem = () => {
   const { data } = usePoem();
-  const { title, content, authorName } = data;
-  return title && content && authorName ? (
+  const { title, text, authorName } = data;
+  return title && text && authorName ? (
     <Flex justify={"center"} flex={1} align={"center"}>
       <Flex
         maxH={"85%"}
@@ -25,7 +25,7 @@ export const Poem = () => {
           {title}
         </Text>
         <Text>
-          {content
+          {text
             .split("\n")
 
             .map((message, key) => (

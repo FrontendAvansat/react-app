@@ -2,8 +2,9 @@ import { useState } from "react";
 
 export interface UserData {
   accessToken: string;
-  name: string;
   email: string;
+  lastName: string;
+  firstName: string;
 }
 export interface UseAuth {
   data: UserData | null;

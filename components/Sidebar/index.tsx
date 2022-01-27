@@ -29,11 +29,11 @@ const SidebarContent = ({ onClick }: { onClick: () => void }) => (
     <HeaderLink href="/" onClick={onClick} w="100%">
       Home
     </HeaderLink>
-    <HeaderLink href="/" onClick={onClick} w="100%">
-      About
+    <HeaderLink href="poem/add" onClick={onClick} w="100%">
+      Add Poem
     </HeaderLink>
-    <HeaderLink href="/" onClick={onClick} w="100%">
-      Contact
+    <HeaderLink href="/auth/profile" onClick={onClick} w="100%">
+      Profile
     </HeaderLink>
   </Flex>
 );

@@ -1,43 +1,33 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { PoemCardProps } from "../Common/PoemCard";
+import { apiClient, authorisation } from "../apiClient";
+import { AuthContext } from "../../pages/_app";
 
 export const usePoem = () => {
   const [data, setData] = useState<Partial<PoemCardProps>>({});
+  const { data: userData } = useContext(AuthContext);
   const { query } = useRouter();
   const id = query.poemId as string;
-  const getData = () => {
+  const getData = async () => {
     try {
-      // const res =
-      setData({
-        title: "Marcel e prost",
-        content: `jbfjhbdsbdfbgfdsasdfghjgfdsdfghjkjhgfdsdfghjkjhgfds
-    hnbdjbjsdfghgfdsdfghgfdfhbgfdfh
-    ncjhjdkhfbhvjdbsclksdnlcds
-    knhkjdbhfjkcvbvkjsbckvfdbvxcfvghjjhgvfcx
-    jdbcjdbcjd
-    ndjbcjdbvkdsnckdfnb
-    dfjkhsjak;kdfhjdksla;
-    sdkvjkcdlsakdjhcdkslasdjhcbxnkdlsdcjvhbdskl
-    jbvkdsldjhvckdlscbhxnjmk
-    kmdl,sa
-    vncms
-    jnsnjcv
-    hbcjndcvh
-    hcjsdcbvhcnjk
-    hbvcjnscvbcnjks
-    jnjmk,l`,
-        authorName: "Marcel Marcel",
-        id: id,
-      });
+      const res = await apiClient.get(
+        `api/poems/${id}`,
+        authorisation(userData?.accessToken)
+      );
+      if (res) {
+        setData(res.data);
+      }
     } catch (e) {
       console.log;
     }
   };
 
   useEffect(() => {
-    getData();
-  }, []);
+    if (id) {
+      getData();
+    }
+  }, [query]);
 
   return { data };
 };
