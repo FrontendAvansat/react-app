@@ -7,25 +7,18 @@ export interface LoginData {
   email: string;
   password: string;
 }
+
 export const useLogin = () => {
   const [data, setData] = useState<LoginData>();
   const { setData: setUser } = useContext(AuthContext);
   const { push } = useRouter();
   const sendData = async () => {
     try {
-      const res = await apiClient.post(
-        "api/auth-service/account/login",
-        data,
-        authorisation("This is the accesToken") //aici o sa am setUser(res.data)
-      );
+      const res = await apiClient.post("api/auth-service/account/login", data);
+      setUser(res.data);
     } catch (e) {
       console.log("error");
     }
-    setUser({
-      accessToken: "asdfg",
-      email: "mari@yahoo.com",
-      name: "Mari Barbu",
-    });
     push("/");
   };
   return { data, setData, sendData };
